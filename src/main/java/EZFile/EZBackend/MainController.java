@@ -2,6 +2,7 @@ package EZFile.EZBackend;
 import java.util.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -58,6 +59,20 @@ public class MainController {
         return attachment_fileRepository.findAll();
     }
 
+    @GetMapping("/files")
+    public Iterable<ATTACHMENT_FILE> files(@RequestParam(name = "fileType", required = false, defaultValue = "all") String fileType) {
+        if (fileType.equals("all")) {
+            return attachment_fileRepository.findAll();
+        } else {
+            List<ATTACHMENT_FILE> matchingfiles = new ArrayList<>();
+            for (ATTACHMENT_FILE file : attachment_fileRepository.findAll()) {
+                if (file.getFILE_NAME().endsWith(fileType)) {
+                    matchingfiles.add(file);
+                }
+            }
+            return matchingfiles;
+        }
+    }
 
 
 }
