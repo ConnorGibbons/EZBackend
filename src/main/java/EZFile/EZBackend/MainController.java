@@ -74,5 +74,14 @@ public class MainController {
         }
     }
 
+    @GetMapping("/filesClassConstruction")
+    public List<File> filesClassConstruction() {
+        List<File> files = new ArrayList<>();
+        for (ATTACHMENT_FILE file : attachment_fileRepository.findAll()) {
+            files.add(new File(file, cust_infoRepository, period_infoRepository, auc_infoRepository, proj_infoRepository, res_infoRepository));
+        }
+        return files;
+    }
+
 
 }
