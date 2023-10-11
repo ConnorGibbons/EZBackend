@@ -120,4 +120,147 @@ public class File implements Serializable {
     public String getFileExtension() {
         return fileExtension;
     }
+
+    public String getFileDescription() {
+        return fileDescription;
+    }
+
+    public String getFilePath() {
+        return filePath;
+    }
+
+    public List<Integer> getProposalIDs() {
+        return proposalIDs;
+    }
+
+    public List<String> getAttachmentTypes() {
+        return attachmentTypes;
+    }
+
+    public Integer getCustomerID() {
+        return customerID;
+    }
+
+    public List<Integer> getAuctionIDs() {
+        return auctionIDs;
+    }
+
+    public List<Integer> getPeriodIDs() {
+        return periodIDs;
+    }
+
+    public List<Integer> getProjectIDs() {
+        return projectIDs;
+    }
+
+    public List<String> getProjectTypes() {
+        return projectTypes;
+    }
+
+    public List<Integer> getResourceIDs() {
+        return resourceIDs;
+    }
+
+    public List<String> getProposalLabels() {
+        return proposalLabels;
+    }
+
+    public String getCustomerName() {
+        return customerName;
+    }
+
+    public List<String> getPeriodTypes() {
+        return periodTypes;
+    }
+
+    public List<String> getAuctionTypes() {
+        return auctionTypes;
+    }
+
+    public List<String> getProjectNames() {
+        return projectNames;
+    }
+
+    public List<String> getResourceNames() {
+        return resourceNames;
+    }
+
+    // Setters 
+
+    public void setFileID(Integer fileID) {
+        this.fileID = fileID;
+    }
+
+    public void setFileName(String fileName) {
+        this.fileName = fileName;
+    }
+
+    public void setFileExtension(String fileExtension) {
+        this.fileExtension = fileExtension;
+    }
+
+    public void setFileDescription(String fileDescription) {
+        this.fileDescription = fileDescription;
+    }
+
+    public void setFilePath(String filePath) {
+        this.filePath = filePath;
+    }
+
+    public void setProposalIDs(List<Integer> proposalIDs) {
+        this.proposalIDs = proposalIDs;
+    }
+
+    public void setAttachmentTypes(List<String> attachmentTypes) {
+        this.attachmentTypes = attachmentTypes;
+    }
+
+    public void setCustomerID(Integer customerID) {
+        this.customerID = customerID;
+    }
+
+    public void setAuctionIDs(List<Integer> auctionIDs) {
+        this.auctionIDs = auctionIDs;
+    }
+
+    public void setPeriodIDs(List<Integer> periodIDs) {
+        this.periodIDs = periodIDs;
+    }
+
+    public void setProjectIDs(List<Integer> projectIDs) {
+        this.projectIDs = projectIDs;
+    }
+
+    public void setProjectTypes(List<String> projectTypes) {
+        this.projectTypes = projectTypes;
+    }
+
+    public void setResourceIDs(List<Integer> resourceIDs) {
+        this.resourceIDs = resourceIDs;
+    }
+
+    public void setProposalLabels(List<String> proposalLabels) {
+        this.proposalLabels = proposalLabels;
+    }
+
+    public void setCustomerName(String customerName) {
+        this.customerName = customerName;
+    }
+
+    public void setPeriodTypes(List<String> periodTypes) {
+        this.periodTypes = periodTypes;
+    }
+
+    public void setAuctionTypes(List<String> auctionTypes) {
+        this.auctionTypes = auctionTypes;
+    }
+
+    public void setProjectNames(List<String> projectNames) {
+        this.projectNames = projectNames;
+    }
+
+    public void setResourceNames(List<String> resourceNames) {
+        this.resourceNames = resourceNames;
+    }
+
 }
