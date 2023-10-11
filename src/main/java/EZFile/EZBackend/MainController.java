@@ -17,6 +17,16 @@ public class MainController {
     private RES_INFORepository res_infoRepository;
     @Autowired
     private CUST_INFORepository cust_infoRepository;
+    @Autowired
+    private PERIOD_INFORepository period_infoRepository;
+    @Autowired 
+    private AUC_INFORepository auc_infoRepository;
+    @Autowired
+    private ATTACHMENT_FILERepository attachment_fileRepository;
+    @Autowired
+    private ATTACH_TYPERepository attach_typeRepository;
+    @Autowired
+    private ATTACH_PROPOSALRepository attach_proposalRepository;
 
     @GetMapping("/test1")
     public Iterable<PROJ_INFO> test1() {
@@ -41,6 +51,11 @@ public class MainController {
     @GetMapping("/test5")
     public Iterable<CUST_INFO> test5(){
         return cust_infoRepository.findAll();
+    }
+
+    @GetMapping("/test6")
+    public Iterable<ATTACHMENT_FILE> test6(){
+        return attachment_fileRepository.findAll();
     }
 
 

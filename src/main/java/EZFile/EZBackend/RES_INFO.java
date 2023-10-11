@@ -13,7 +13,7 @@ import jakarta.persistence.OneToMany;
 public class RES_INFO {
     @Id
     @Column
-    private int RESOURCE_ID;
+    private Integer RESOURCE_ID;
     
     @Column
     private String RESOURCE_NAME;
@@ -27,7 +27,7 @@ public class RES_INFO {
     private List<PROPOSAL_INFO> proposal_info;
 
     // Getters
-    public int getRESOURCE_ID() {
+    public Integer getRESOURCE_ID() {
         return RESOURCE_ID;
     }
 
@@ -44,7 +44,7 @@ public class RES_INFO {
     }
 
     // Setters
-    public void setRESOURCE_ID(int RESOURCE_ID) {
+    public void setRESOURCE_ID(Integer RESOURCE_ID) {
         this.RESOURCE_ID = RESOURCE_ID;
     }
 

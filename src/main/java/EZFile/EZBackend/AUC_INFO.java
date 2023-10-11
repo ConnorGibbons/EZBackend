@@ -15,13 +15,13 @@ public class AUC_INFO {
 
     @Id
     @Column
-    private int AUC_ID;
+    private Integer AUCTION_ID;
 
     @Column
-    private int COMMITMENT_PERIOD_ID;
+    private Integer COMMITMENT_PERIOD_ID;
 
     @Column
-    private int AUCTION_PERIOD_ID;
+    private Integer AUCTION_PERIOD_ID;
 
     @Column
     private Date AUCTION_BEGIN_DATE;
@@ -49,15 +49,15 @@ public class AUC_INFO {
 
     // Getters
 
-    public int getAUC_ID() {
-        return AUC_ID;
+    public Integer getAUCTION_ID() {
+        return AUCTION_ID;
     }
 
-    public int getCOMMITMENT_PERIOD_ID() {
+    public Integer getCOMMITMENT_PERIOD_ID() {
         return COMMITMENT_PERIOD_ID;
     }
 
-    public int getAUCTION_PERIOD_ID() {
+    public Integer getAUCTION_PERIOD_ID() {
         return AUCTION_PERIOD_ID;
     }
 
@@ -87,15 +87,15 @@ public class AUC_INFO {
     
     // Setters 
 
-    public void setAUC_ID(int AUC_ID) {
-        this.AUC_ID = AUC_ID;
+    public void setAUCTION_ID(Integer AUCTION_ID) {
+        this.AUCTION_ID = AUCTION_ID;
     }
 
-    public void setCOMMITMENT_PERIOD_ID(int COMMITMENT_PERIOD_ID) {
+    public void setCOMMITMENT_PERIOD_ID(Integer COMMITMENT_PERIOD_ID) {
         this.COMMITMENT_PERIOD_ID = COMMITMENT_PERIOD_ID;
     }
 
-    public void setAUCTION_PERIOD_ID(int AUCTION_PERIOD_ID) {
+    public void setAUCTION_PERIOD_ID(Integer AUCTION_PERIOD_ID) {
         this.AUCTION_PERIOD_ID = AUCTION_PERIOD_ID;
     }
 

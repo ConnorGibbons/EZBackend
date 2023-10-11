@@ -13,7 +13,7 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 public class PERIOD_INFO {
     @Id
     @Column
-    private int PERIOD_ID;
+    private Integer PERIOD_ID;
 
     @Column
     private String PERIOD_TYPE;
@@ -28,7 +28,7 @@ public class PERIOD_INFO {
     private Date END_DATE;
 
     @Column
-    private int PARENT_PERIOD_ID;
+    private Integer PARENT_PERIOD_ID;
 
     // Relations
     @OneToMany(mappedBy = "period_info")
@@ -45,7 +45,7 @@ public class PERIOD_INFO {
 
     // Getters
 
-    public int getPERIOD_ID() {
+    public Integer getPERIOD_ID() {
         return PERIOD_ID;
     }
 
@@ -65,7 +65,7 @@ public class PERIOD_INFO {
         return END_DATE;
     }
 
-    public int getPARENT_PERIOD_ID() {
+    public Integer getPARENT_PERIOD_ID() {
         return PARENT_PERIOD_ID;
     }
 
@@ -75,7 +75,7 @@ public class PERIOD_INFO {
 
     // Setters 
 
-    public void setPERIOD_ID(int PERIOD_ID) {
+    public void setPERIOD_ID(Integer PERIOD_ID) {
         this.PERIOD_ID = PERIOD_ID;
     }
 
@@ -95,7 +95,7 @@ public class PERIOD_INFO {
         this.END_DATE = END_DATE;
     }
 
-    public void setPARENT_PERIOD_ID(int PARENT_PERIOD_ID) {
+    public void setPARENT_PERIOD_ID(Integer PARENT_PERIOD_ID) {
         this.PARENT_PERIOD_ID = PARENT_PERIOD_ID;
     }
 

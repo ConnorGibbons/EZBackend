@@ -14,7 +14,7 @@ import jakarta.persistence.Table;
 public class PROJ_INFO {
     @Id
     @Column
-    private int PROJECT_ID;
+    private Integer PROJECT_ID;
 
     @Column
     private String PROJECT_NAME;
@@ -23,7 +23,7 @@ public class PROJ_INFO {
     @JsonIgnore
     private List<PROPOSAL_INFO> proposal_info;
 
-    public int getPROJECT_ID() {
+    public Integer getPROJECT_ID() {
         return PROJECT_ID;
     }
 
@@ -35,7 +35,7 @@ public class PROJ_INFO {
         return proposal_info;
     }
 
-    public void setPROJECT_ID(int PROJECT_ID) {
+    public void setPROJECT_ID(Integer PROJECT_ID) {
         this.PROJECT_ID = PROJECT_ID;
     }
 

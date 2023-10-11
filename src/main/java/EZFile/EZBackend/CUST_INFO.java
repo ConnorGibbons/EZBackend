@@ -11,7 +11,7 @@ import jakarta.persistence.OneToMany;
 public class CUST_INFO {
     @Id
     @Column
-    private int CUSTOMER_ID;
+    private Integer CUSTOMER_ID;
 
     @Column
     private String CUSTOMER_NAME;
@@ -24,7 +24,7 @@ public class CUST_INFO {
 
     // Getters 
     
-    public int getCUSTOMER_ID() {
+    public Integer getCUSTOMER_ID() {
         return CUSTOMER_ID;
     }
 
@@ -38,7 +38,7 @@ public class CUST_INFO {
 
     // Setters
 
-    public void setCUSTOMER_ID(int CUSTOMER_ID) {
+    public void setCUSTOMER_ID(Integer CUSTOMER_ID) {
         this.CUSTOMER_ID = CUSTOMER_ID;
     }
 
@@ -49,5 +49,5 @@ public class CUST_INFO {
     public void setPROPOSAL_INFO(List<PROPOSAL_INFO> proposal_info) {
         this.proposal_info = proposal_info;
     }
-    
+
 }
