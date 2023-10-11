@@ -13,6 +13,10 @@ public class MainController {
     private PROJ_TYPERepository proj_typeRepository;
     @Autowired
     private PROPOSAL_INFORepository proposal_infoRepository;
+    @Autowired
+    private RES_INFORepository res_infoRepository;
+    @Autowired
+    private CUST_INFORepository cust_infoRepository;
 
     @GetMapping("/test1")
     public Iterable<PROJ_INFO> test1() {
@@ -30,9 +34,15 @@ public class MainController {
     }
 
     @GetMapping("/test4")
-    public int test4(){
-        Iterator<PROPOSAL_INFO> data = proposal_infoRepository.findAll().iterator();
-        return data.next().getPROJECT_ID();
+    public Iterable<RES_INFO> test4(){
+        return res_infoRepository.findAll();
     }
+
+    @GetMapping("/test5")
+    public Iterable<CUST_INFO> test5(){
+        return cust_infoRepository.findAll();
+    }
+
+
 
 }

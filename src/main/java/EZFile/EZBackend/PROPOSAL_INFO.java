@@ -47,6 +47,26 @@ public class PROPOSAL_INFO {
     @JsonIgnore
     private PROJ_TYPE proj_type;
 
+    @ManyToOne
+    @JoinColumn(name = "RESOURCE_ID", insertable = false, updatable = false)
+    @JsonIgnore
+    private RES_INFO res_info;
+
+    @ManyToOne
+    @JoinColumn(name = "CUSTOMER_ID", insertable = false, updatable = false)
+    @JsonIgnore
+    private CUST_INFO cust_info;
+
+    @ManyToOne
+    @JoinColumn(name = "PERIOD_ID", insertable = false, updatable = false)
+    @JsonIgnore
+    private PERIOD_INFO period_info;
+
+    @ManyToOne
+    @JoinColumn(name = "AUCTION_ID", insertable = false, updatable = false)
+    @JsonIgnore
+    private AUC_INFO auc_info;
+
     // Getters
 
     public int getPROPOSAL_ID() {
