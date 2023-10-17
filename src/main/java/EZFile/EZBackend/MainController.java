@@ -37,9 +37,9 @@ public class MainController {
     @GetMapping("/files")
     public List<File> files(
         @RequestParam(name = "fileExtension", required = false, defaultValue = "all") String fileExtension) {
-        if (allFiles == null || (diffInMinutes(refreshDate, new Date()) >= 5)) {
+        if (allFiles == null || (diffInMinutes(refreshDate, new Date()) >= 5)) { // If there is no cache or the cache is older than 5 minutes, rebuild the cache.
             allFiles = genAllFiles(); // This might break if two requests come in simultaneously 
-            System.out.println("No file cache present or cache was outdates, generating one now.");
+            System.out.println("No file cache present or cache was outdated, generating one now.");
         }
 
         if (fileExtension.equals("all")) {
