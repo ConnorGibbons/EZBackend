@@ -51,6 +51,7 @@ public class File implements Serializable {
         this.resourceNames = new ArrayList<>();
 
         for (ATTACH_PROPOSAL attachmentInstance : file.getATTACH_PROPOSAL()) {
+            System.out.println("adding proposal information to" + this.fileName);
             this.customerID = attachmentInstance.getPROPOSAL_INFO().getCUSTOMER_ID();
             this.proposalIDs.add(attachmentInstance.getPROPOSAL_ID());
             this.attachmentTypes.add(attachmentInstance.getATTACHMENT_TYPE());
@@ -62,7 +63,12 @@ public class File implements Serializable {
             this.proposalLabels.add(attachmentInstance.getPROPOSAL_INFO().getPROPOSAL_LABEL());
         }
 
-        this.customerName = customers.findById(this.customerID).get().getCUSTOMER_NAME();
+        if (this.customerID == null) {
+            System.out.println("No customer ID found for file " + this.fileName);
+        }
+        else {
+            this.customerName = customers.findById(this.customerID).get().getCUSTOMER_NAME();
+        }
 
         for (Integer periodID : this.periodIDs) {
             this.periodTypes.add(periods.findById(periodID).get().getPERIOD_TYPE());

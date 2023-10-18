@@ -34,12 +34,21 @@ public class MainController {
 
     private Date refreshDate = new Date();
 
+    @GetMapping("/cacheRebuild")
+    public String cacheRebuild() {
+        System.out.println("Rebuilding cache...");
+        refreshDate = new Date();
+        allFiles = genAllFiles();
+        return "Cache rebuilt in " + diffInMinutes(refreshDate, new Date()) + " minute(s). # Of Files Caches: " + allFiles.size() + ".";
+    }
+
     @GetMapping("/files")
     public List<File> files(
         @RequestParam(name = "fileExtension", required = false, defaultValue = "all") String fileExtension) {
         if (allFiles == null || (diffInMinutes(refreshDate, new Date()) >= 5)) { // If there is no cache or the cache is older than 5 minutes, rebuild the cache.
+            refreshDate = new Date();
             allFiles = genAllFiles(); // This might break if two requests come in simultaneously 
-            System.out.println("No file cache present or cache was outdated, generating one now.");
+            System.out.println("No file cache present or cache was outdated, generated in" + diffInMinutes(refreshDate, new Date()) + " minute(s).");
         }
 
         if (fileExtension.equals("all")) {
