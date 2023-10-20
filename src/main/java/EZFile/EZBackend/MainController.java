@@ -1,6 +1,7 @@
 package EZFile.EZBackend;
 import java.lang.reflect.Method;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
@@ -46,7 +47,7 @@ public class MainController {
     public List<File> files(
         @RequestParam MultiValueMap<String, String> values) throws Exception {
 
-        String[] validParameters = {"getFileName"};
+        String[] validParameters = {"getFileName", "getAuctionTypes"};
         List<BiFunction<List<File>, String, List<File>>> functionList = new ArrayList<>();
 
         if (allFiles == null || (diffInMinutes(refreshDate, new Date()) >= 5)) { // If there is no cache or the cache is older than 5 minutes, rebuild the cache.
@@ -55,29 +56,39 @@ public class MainController {
         }
         List<File> resultFiles = allFiles;
 
-
-        //Function newFunc = (Object files) -> {return files.stream().filter(file -> file.getFileName().equals("Project docs.zip"));};
-        //List<Function> funcs = generateFunctionList(values);
-        //Function<List<File>, List<File>> newFunc = files ->  {return files.stream().filter(file -> file.getFileName().equals("Project docs.zip")).collect(Collectors.toList());};
         
         
         BiFunction <List<File>,  Map<String, List<String>>, List<File>> newFunc = (files, fileArgs) -> {
             List<File> t = files.stream().filter(file -> {
                 try {
-
+                    //filterCategory is the file property to filter by
                     String filterCategory = fileArgs.keySet().toArray()[0].toString();
+                    List<String> filterRequirements = fileArgs.get(filterCategory);
+                    filterRequirements.replaceAll(str -> str.toString().toLowerCase());
+
                     Method m = file.getClass().getMethod(filterCategory);
-                    Object gname = m.invoke(file);
-                    System.out.println(gname);
+                    Object fileProperty = m.invoke(file);
+                    //System.out.println(fileProperty.getClass());
+                    if (fileProperty.getClass().toString().equals("class java.util.ArrayList")) {
+                        List<String> filePropertyList = ((List<String>)fileProperty).stream().collect(Collectors.toList());
+
+                        //System.out.println(!Collections.disjoint(filePropertyList, filterRequirements));
+                        
+                    } else {
+                        if(filterRequirements.contains(fileProperty.toString().toLowerCase())) {
+                            return true;
+                        }
+                    }
+                
+                   // if(filterRequirements.contains(fileProperty.toString().toLowerCase())) {
+                   //     return true;
+                    //} 
                 } catch (Exception e) {
 
-                } finally {
-
                 }
-
-                return true;
+                return false;
             }).collect(Collectors.toList());
-            return files;
+            return t;
         };
 
 
@@ -88,12 +99,10 @@ public class MainController {
 
             resultFiles = newFunc.apply(resultFiles, filter);
         };
+    
+        //System.out.println(resultFiles);
 
-
-
-        //List<File> test = newfunc.apply(allFiles);
-        //System.out.println(test);
-        return allFiles;
+        return resultFiles;
     }
 
 
