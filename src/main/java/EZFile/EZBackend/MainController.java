@@ -53,18 +53,16 @@ public class MainController {
 
     @GetMapping("/files")
     public List<File> files(
-
         @RequestParam MultiValueMap<String, String> values) throws Exception {
         System.out.print(values);
         String[] validParameters = {"getFileName", "getAuctionTypes"};
-      
-        @RequestParam(name = "fileExtension", required = false, defaultValue = "all") String fileExtension) {
-        if (allFiles == null || (diffInMinutes(refreshDate, new Date()) >= 5)) { // If there is no cache or the cache is older than 5 minutes, rebuild the cache.
-            refreshDate = new Date();
-            allFiles = genAllFiles(); // This might break if two requests come in simultaneously 
-            System.out.println("No file cache present or cache was outdated, generated in" + diffInMinutes(refreshDate, new Date()) + " minute(s).");
-        }
 
+        if (allFiles == null || (diffInMinutes(refreshDate, new Date()) >= 5)) { // If there is no cache or the cache is older than 5 minutes, rebuild the cache.
+            allFiles = genAllFiles(); // This might break if two requests come in simultaneously
+            refreshDate = new Date();
+            System.out.println("No file cache present or cache was outdated, generating one now.");
+        }
+        
         List<File> resultFiles = allFiles;
 
         
@@ -118,20 +116,6 @@ public class MainController {
 
         return resultFiles;
     }
-
-        
-    }
-
-    @GetMapping("/filterFiles")
-    public List<File> filterFiles(
-        @RequestParam(name = "filter", required = false, defaultValue = "none") String filter, @RequestParam(name = "filterName", required = false, defaultValue = "none") Integer filterVal){
-        if(filter.equals("fileID")){
-            return allFiles.stream().filter(file -> file.getFileID().equals(filterVal)).collect(Collectors.toList());
-        }
-
-        return allFiles;
-    }   
-
 
     public List<File> genAllFiles() {
         List<File> files = new ArrayList<>();
