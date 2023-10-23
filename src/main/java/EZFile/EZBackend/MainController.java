@@ -56,7 +56,18 @@ public class MainController {
         } else {
             return allFiles.stream().filter(file -> file.getFileExtension().equals(fileExtension)).collect(Collectors.toList());
         }
+        
     }
+
+    @GetMapping("/filterFiles")
+    public List<File> filterFiles(
+        @RequestParam(name = "filter", required = false, defaultValue = "none") String filter, @RequestParam(name = "filterName", required = false, defaultValue = "none") Integer filterVal){
+        if(filter.equals("fileID")){
+            return allFiles.stream().filter(file -> file.getFileID().equals(filterVal)).collect(Collectors.toList());
+        }
+
+        return allFiles;
+    }   
 
     public List<File> genAllFiles() {
         List<File> files = new ArrayList<>();
