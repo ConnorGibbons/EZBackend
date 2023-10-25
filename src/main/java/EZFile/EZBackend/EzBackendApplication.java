@@ -1,6 +1,6 @@
 package EZFile.EZBackend;
 
-//import org.springframework.boot.SpringApplication;
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 //import com.mysql.jdbc.Driver;
 
@@ -15,6 +15,8 @@ class DemoApplication{
   public static void main(String[] args) {
     //jdbc:mysql://<dbhost>:<dbport>/<dbname>...
 	// Reference: https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/java-rds.html
+	SpringApplication.run(DemoApplication.class, args);
+
 	String dbName = "cs320";
 	String userName = "cs320_admin";
 	String password = "ilovemybf123#";
